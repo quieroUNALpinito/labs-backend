@@ -1,5 +1,7 @@
 package co.edu.unal.software_engineering.labs.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
@@ -36,6 +38,7 @@ public class User implements Serializable{
     @ManyToMany( fetch = FetchType.EAGER )
     @JoinTable( name = "user_role", joinColumns = { @JoinColumn( name = "user_id" ) },
             inverseJoinColumns = { @JoinColumn( name = "role_id" ) } )
+    @JsonBackReference
     private List<Role> roles;
 
     /**
